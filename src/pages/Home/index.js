@@ -6,6 +6,7 @@ export default {
     template: require('./index.html'),
     data() {
         return {
+            msg: '容器组件的标题',
             list: [
                 'list-item1',
                 'list-item2',
