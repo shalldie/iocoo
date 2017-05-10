@@ -1,6 +1,6 @@
 <template>
     <div class="menu-list2">
-        <h4>This is MenuList.</h4>
+        <h4>This is MenuList2.</h4>
         <ul>
             <li v-for="(item,index) in list" :key="index">{{item}}</li>
         </ul>
