@@ -16,7 +16,7 @@ export default {
         console.log(this);
         Data.list = [
             'one', 'two', 'three'
-        ]
+        ];
     },
     components: {
         MenuList
