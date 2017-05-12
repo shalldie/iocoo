@@ -1,27 +1,24 @@
 import './index.scss'; // 私有样式
-import NavBar from '@/components/NavBar'; // 组件
+import MenuList from '@/components/MenuList'; // 组件
 
+import Data from '@/Data';
+
+function sleep(delay) {
+    return new Promise(res => {
+        res();
+    }, delay);
+}
 
 export default {
     template: require('./index.html'),
-    data() {
-        return {
-            msg: '容器组件的标题',
-            list: [
-                'list-item1',
-                'list-item2',
-                'list-item3',
-                'list-item4'
-            ],
-            list2: [
-                'list2-item1',
-                'list2-item2',
-                'list2-item3',
-                'list2-item4'
-            ]
-        };
+    async created() {
+        await sleep(1000);
+        console.log(this);
+        Data.list = [
+            'one', 'two', 'three'
+        ]
     },
     components: {
-        NavBar
+        MenuList
     }
 }
