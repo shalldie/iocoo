@@ -1,11 +1,23 @@
 import './index.scss';
-import Data from '@/Data';
+import Store from '@/Store';
 
 export default {
     template: require('./index.html'),
-    computed: {
-        list() {
-            return Data.list;
+    data() {
+        return {
+            list: Store.list
         }
+    },
+    computed: {
+        // list() {
+        //     // return this.$root.$data.list;
+        //     return Store.list;
+        // }
+    },
+    created() {
+        // setTimeout(() => {
+        //     // console.log(this.$root.$data.list);
+        //     console.log(this.list);
+        // }, 3000);
     }
 }
