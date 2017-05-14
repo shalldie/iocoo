@@ -15,7 +15,7 @@ function sleep(delay) {
 export default {
     template: require('./index.html'),
     async created() {
-        await sleep(3000);
+        await sleep(1000);
         store.api = {
             name: 'hello world',
             list: [
