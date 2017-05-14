@@ -1,8 +1,7 @@
 import './index.scss';
+
 import store from '@/store';
 import vm from '@/vm';
-
-import NameInput from '@/components/NameInput';
 
 export default {
     template: require('./index.html'),
@@ -12,19 +11,15 @@ export default {
         };
     },
     computed: {
-        // name() {
-        //     return store.api.name;
-        // },
-        // list() {
-        //     return store.api.list;
-        // }
+        name() {
+            return store.api.name;
+        }
     },
     created() {
         // vm.$on('update', () => {   // 在动态数据加载完毕之后，重新初始化data数据
         //     Object.assign(this.$data, this.$options.data());
         // });
     },
-    components: {
-        NameInput
+    watch: {
     }
 }

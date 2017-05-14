@@ -1,6 +1,7 @@
 <div class="menu-list">
-    <h4>This is MenuList.</h4>
+    <h4>{{store.api.name}}</h4>
+    <name-input></name-input>
     <ul>
-        <li v-for="(item,index) in list" :key="index">{{item}}</li>
+        <li v-for="(item,index) in store.api.list" :key="index">{{item}}</li>
     </ul>
 </div>
