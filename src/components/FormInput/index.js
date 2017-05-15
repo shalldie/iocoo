@@ -1,13 +1,23 @@
 import './index.scss';
 
-import store from '@/store';
-import vm from '@/vm';
-
 export default {
     template: require('./index.html'),
+    props: {
+        inputIndex: {
+            type: Number,
+            default: 0
+        },
+        lbl: {
+            type: String,
+            default: 'field'
+        },
+        defVal: {
+            default: ''
+        }
+    },
     data() {
         return {
-            store: store
+            val: this.defVal
         };
     },
     computed: {
@@ -21,5 +31,8 @@ export default {
         // });
     },
     watch: {
+        'val': function () { // 监听值改变
+            this.$emit('update', this.val, this.inputIndex);
+        }
     }
 }

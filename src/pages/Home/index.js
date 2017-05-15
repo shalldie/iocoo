@@ -1,8 +1,5 @@
 import './index.scss'; // 私有样式
-import MenuList from '@/components/MenuList'; // 组件
-
-import store from '@/store';
-import vm from '@/vm';
+import FormList from '@/components/FormList'; // 组件
 
 function sleep(delay) {
     return new Promise(res => {
@@ -14,16 +11,30 @@ function sleep(delay) {
 
 export default {
     template: require('./index.html'),
-    async created() {
-        await sleep(1000);
-        store.api = {
-            name: 'hello world',
-            list: [
-                'one', 'two', 'three', 'four'
-            ]
+    data() {
+        return {
+            formOpt: {
+                title: '',
+                list: []
+            }
         };
     },
+    async created() {
+        await sleep(1000);
+        this.formOpt = {
+            title: 'test title',
+            list: [{
+                lbl: 'name',
+                val: 'tom'
+            }, {
+                lbl: 'age',
+                val: 12
+            }]
+        };
+        await sleep(5000);
+        console.log(JSON.stringify(this.formOpt, null, '    '));
+    },
     components: {
-        MenuList
+        FormList
     }
 }
