@@ -1,16 +1,18 @@
 <template>
   <div id="app">
-    <home></home>
+    {{msg}}
   </div>
 </template>
 
 <script>
-  import Home from './pages/Home';
+  import Hello from './components/Hello'
 
   export default {
     name: 'app',
-    components: {
-      Home
+    data: function () {
+      return {
+        msg: 'hello world'
+      }
     }
   }
 
