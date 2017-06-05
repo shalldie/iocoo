@@ -1,10 +1,12 @@
 import Vue from 'vue'
-import App from './App'
+import Home from './pages/Home'
 
 Vue.config.productionTip = false
+
+import '@/assets/base.scss';
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  render: h => h(App)
+  render: h => h(Home)
 })
