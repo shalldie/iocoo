@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/postDouble', function (req, res) {
-    let num = req.body.num;
+router.post('/postMsg', function (req, res) {
+    let name = req.body.name;
 
     res.json({
-        name: req.body.name,
-        result: num * 2
+        msg: `Hello ~ ${name} !!! timeStamp:${+new Date}`
     });
 });
 

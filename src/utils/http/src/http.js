@@ -78,7 +78,7 @@ function post(url, data) {
  * @returns {Promise<object>}
  */
 function postJSON(url, data) {
-    return post(url, data).then(n => n.json);
+    return post(url, data).then(n => n.json());
 }
 
 function get(url, data) {
