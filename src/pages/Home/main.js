@@ -1,5 +1,6 @@
 import Vue from 'vue'
-import Home from './pages/Home'
+import Home from './index.vue'
+import '@/utils/http';
 
 Vue.config.productionTip = false
 

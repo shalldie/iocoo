@@ -1,12 +1,6 @@
 <template>
-    <ul>
-        <li v-for="(item,index) in list" :index="index">
-            <form-input :opt="item"></form-input>
-        </li>
-        <li>
-            <button type="button" @click="showInfo">Click</button>
-        </li>
-    </ul>
+    <div class="home-page">
+    </div>
 </template>
 
 <script>
@@ -42,5 +36,15 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+.home-page {
+    margin: 50px auto;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #ddd;
+}
+</style>
+
 
 
