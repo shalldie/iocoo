@@ -18,8 +18,6 @@
                     message: result.msg
                 });
             }
-        },
-        async created() {
         }
     }
 
