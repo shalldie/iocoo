@@ -14,7 +14,7 @@
                 imgSrc: require('../assets/info.svg'),
                 visible: false,
                 closed: false,
-                duration: 4000, // 显示时间
+                duration: 3000, // 显示时间
                 message: '',    // 显示内容
                 timer: null,
                 onClose: null

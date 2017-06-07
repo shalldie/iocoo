@@ -1,3 +1,9 @@
+/**
+ * 获取数据类型
+ * 
+ * @param {any} sender 要识别的数据
+ * @returns 
+ */
 function getType(sender) {
     return sender === null ? (sender + '') : Object.prototype.toString.call(sender).toLowerCase().match(/\s(\S+?)\]/)[1];
 }
