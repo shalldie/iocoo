@@ -20,7 +20,6 @@ var MessageBox = function (options) {
     document.body.appendChild(vm.$el);       // 将 vue 对象中存在于内存的dom，挂载到页面
     vm.visible = true;                       // 初始化之后就默认显示
     vm.$el.style.zindex = zindex++;          // 设置z-index，保证新的在最上方
-    console.log(JSON.stringify(vm.$data, null, '    '));
     return vm;
 };
 
