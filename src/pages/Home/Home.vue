@@ -1,41 +1,60 @@
 <template>
     <div class="home-page">
         <button @click="showInfo" type="button">ajax请求获取数据,并弹框显示。</button>
+        <button @click="showTimeout" type="button">ajax请求获取数据,超时。</button>
     </div>
 </template>
 
 <script>
-    export default {
-        data: function () {
-            return {
-                message: ''
-            };
+export default {
+    data: function () {
+        return {
+            message: ''
+        };
+    },
+    methods: {
+        async showInfo() {
+            let result = await this.$http.postJSON('/postMsg', { name: 'Tom' });
+            this.$messageBox({
+                message: result.msg
+            });
         },
-        methods: {
-            async showInfo() {
-                let result = await this.$http.postJSON('/postMsg', { name: 'Tom' });
+        async showTimeout() {
+            try {
+                let result = await this.$http.ajax({
+                    url: '/postMsg',
+                    method: 'POST',
+                    body: { name: 'tom' },
+                    timeout: 2000
+                });
                 this.$messageBox({
                     message: result.msg
                 });
             }
+            catch (ex) {
+                this.$messageBox({
+                    message: ex
+                });
+            }
         }
     }
+}
 
 </script>
 
 <style lang="scss">
-    .home-page {
-        margin: 150px auto;
-        background: #fff;
-        width: 300px;
-        height: 100px;
-        /*border: 1px solid #ddd;*/
-        box-shadow: 0 0 16px #ddd;
-        text-align: center;
-        padding-top: 50px;
+.home-page {
+    margin: 150px auto;
+    background: #fff;
+    width: 300px;
+    height: 100px;
+    /*border: 1px solid #ddd;*/
+    box-shadow: 0 0 16px #ddd;
+    text-align: center;
+    padding-top: 50px;
 
-        button {
-            padding: 6px 10px;
-        }
+    button {
+        padding: 6px 10px;
     }
+}
 </style>

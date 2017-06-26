@@ -18,7 +18,8 @@ function ajax(options) {
     let defaults = {
         url: '',
         body: '',
-        method: 'GET'
+        method: 'GET',
+        timeout: 0
     };
 
     let opt = Object.assign({}, defaults, options);
@@ -58,7 +59,18 @@ function ajax(options) {
     };
 
     actionDict[dataType] && actionDict[dataType]();
-    return fetch(opt.url, opt);
+
+    // 超时 
+    if (opt.timeout > 0) {
+        return new Promise((resolve, reject) => {
+            setTimeout(function () {
+                reject('timeout');
+            }, opt.timeout);
+            return fetch(opt.url, opt);
+        });
+    } else {
+        return fetch(opt.url, opt);
+    }
 }
 
 /**

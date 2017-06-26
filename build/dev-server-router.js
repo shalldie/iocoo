@@ -3,10 +3,12 @@ const router = express.Router();
 
 router.post('/postMsg', function (req, res) {
     let name = req.body.name;
-
-    res.json({
-        msg: `Hello ~ ${name} !!! timeStamp:${+new Date}`
-    });
+    
+    setTimeout(function () {
+        res.json({
+            msg: `Hello ~ ${name} !!! timeStamp:${+new Date}`
+        });
+    }, 2000);
 });
 
 module.exports = router;
