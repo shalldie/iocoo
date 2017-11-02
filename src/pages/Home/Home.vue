@@ -3,8 +3,8 @@
         <div class="search-wrap">
             <el-input v-model="input" placeholder="请输入内容" suffix-icon="el-icon-edit"></el-input>
         </div>
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
+        <el-tabs v-model="activeTab" @tab-click="handleClick">
+            <el-tab-pane label="All" name="all"></el-tab-pane>
             <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
             <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
             <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
@@ -17,12 +17,13 @@ export default {
     data() {
         return {
             input: '',
+            activeTab: 'all',
             todos: []
         };
     },
     methods: {
-        handleClick() {
-
+        handleClick(tab, event) {
+            console.log(tab, event);
         }
     }
 }
