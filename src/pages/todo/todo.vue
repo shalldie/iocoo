@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <div class="todo">
         <div class="search-wrap">
             <el-input v-model="input" placeholder="请输入内容" suffix-icon="el-icon-edit"></el-input>
         </div>
@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.home {
+.todo {
     width: 500px;
     padding: 20px 30px;
     box-sizing: border-box;
