@@ -4,7 +4,7 @@ import { getStorage, saveStorage } from '../../lib/storage';
 
 //#region initialState
 const state = {
-    todos: getStorage('todos') || []
+    list: getStorage('todos') || []
 };
 //#endregion
 
@@ -23,8 +23,8 @@ const mutations = {
      * @param {any} payload 
      */
     [types.ADD_TODO](state, payload) {
-        state.todos.push(payload);
-        saveStorage('todos', state.todos);
+        state.list.push(payload);
+        saveStorage('todos', state.list);
     },
     /**
      * 根据key删除 TDOO
@@ -33,8 +33,19 @@ const mutations = {
      * @param {any} { key } 
      */
     [types.DEL_TODO](state, { key }) {
-        state.todos = state.todos.filter(item => item.key != key);
-        saveStorage('todos', state.todos);
+        state.list = state.list.filter(item => item.key != key);
+        saveStorage('todos', state.list);
+    },
+    /**
+     * 切换todo状态
+     * 
+     * @param {any} state 
+     * @param {any} key 
+     */
+    [types.TOGGLE_TODO_STATU](state, key) {
+        let item = state.list.filter(item => item.key == key)[0];
+        item.done = !item.done;
+        saveStorage('todos', state.list);
     }
 };
 //#endregion

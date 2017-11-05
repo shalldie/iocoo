@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import todo from '@/pages/todo/todo';
+import todo from '../pages/todo/todo';
 
 Vue.use(Router)
 
@@ -8,9 +8,11 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect:'/todo'
-        },{
-            path:'/todo/:filter'
+            redirect: '/todo/all'
+        }, {
+            path: '/todo/:filter',
+            component: todo,
+            props: true
         }
     ]
 })

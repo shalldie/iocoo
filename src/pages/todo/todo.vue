@@ -1,29 +1,87 @@
 <template>
     <div class="todo">
         <div class="search-wrap">
-            <el-input v-model="input" placeholder="请输入内容" suffix-icon="el-icon-edit"></el-input>
+            <el-input @keyup.enter.native="addTodo" v-model="input" placeholder="请输入内容" suffix-icon="el-icon-edit"></el-input>
         </div>
-        <el-tabs v-model="activeTab" @tab-click="handleClick">
-            <el-tab-pane label="All" name="all"></el-tab-pane>
-            <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
-            <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
-            <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
-        </el-tabs>
+        <div class="filter-wrap">
+            <router-link :to="{ path:'/todo/all'}">
+                <el-button class="el-icon-tickets" type="text">All</el-button>
+            </router-link>
+            <router-link :to="{ path:'/todo/todo'}">
+                <el-button class="el-icon-more" type="text">Todo</el-button>
+            </router-link>
+            <router-link :to="{ path:'/todo/done'}">
+                <el-button class="el-icon-more-outline" type="text">Done</el-button>
+            </router-link>
+        </div>
+        <ul class="todo-list">
+            <li @click="toggleStatu(item.key)" v-for="(item,index) in list" :key="index" :class="{'del-type':item.done}">{{index+1}}. {{item.text}}</li>
+        </ul>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import * as types from '../../store/mutation-types';
+
 export default {
+    props: {
+        filter: {
+            type: String,
+            default: 'all'
+        }
+    },
     data() {
         return {
-            input: '',
-            activeTab: 'all',
-            todos: []
+            input: ''
         };
     },
+    computed: {
+        ...mapState({
+            todos: state => state.todos.list
+        }),
+        list() {
+            if (this.filter == 'all') {
+                return this.todos;
+            }
+
+            if (this.filter == 'todo') {
+                return this.todos.filter(item => !item.done);
+            }
+
+            return this.todos.filter(item => item.done);
+        }
+    },
+    created() {
+        console.log(this.list);
+    },
     methods: {
-        handleClick(tab, event) {
-            console.log(tab, event);
+        addTodo() {
+            let input = this.input;
+            if (input.length <= 0) return;
+
+            this.$store.commit(types.ADD_TODO, {
+                key: +new Date,
+                done: false,
+                text: input
+            });
+
+            this.input = '';
+            this.$messageBox({
+                message: '添加了新 todo ...'
+            });
+        },
+        toggleStatu(key) {
+            this.$store.commit(types.TOGGLE_TODO_STATU, key);
+
+            this.$messageBox({
+                message: '变更了状态 ...'
+            });
+        }
+    },
+    watch: {
+        '$route': function () {
+            // console.log(this.filter);
         }
     }
 }
@@ -41,7 +99,43 @@ export default {
     box-shadow: 0 0 16px 4px #ddd;
 }
 
-.search-wrap {
+.filter-wrap {
+    text-align: left;
+
+    > a {
+        margin-right: 16px;
+
+        .el-button {
+            color: #666;
+        }
+        &.router-link-active {
+            .el-button {
+                color: #409eff;
+            }
+        }
+    }
+}
+
+.todo-list {
+    padding: 0;
+    text-align: left;
+    list-style-type: none;
+    border-top: 1px solid #ddd;
+
+    > li {
+        border-bottom: 1px solid #ddd;
+        line-height: 40px;
+        height: 40px;
+        padding: 0 6px;
+        margin-right: 50px;
+        cursor: pointer;
+        &:hover {
+            background-color: #f1f1f1;
+        }
+        &.del-type {
+            text-decoration: line-through;
+        }
+    }
 }
 </style>
 
