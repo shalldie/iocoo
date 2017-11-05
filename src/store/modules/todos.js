@@ -30,9 +30,9 @@ const mutations = {
      * 根据key删除 TDOO
      * 
      * @param {any} state 
-     * @param {any} { key } 
+     * @param {any} key
      */
-    [types.DEL_TODO](state, { key }) {
+    [types.DEL_TODO](state, key) {
         state.list = state.list.filter(item => item.key != key);
         saveStorage('todos', state.list);
     },

@@ -15,7 +15,10 @@
             </router-link>
         </div>
         <ul class="todo-list">
-            <li @click="toggleStatu(item.key)" v-for="(item,index) in list" :key="index" :class="{'del-type':item.done}">{{index+1}}. {{item.text}}</li>
+            <li v-for="(item,index) in list" :key="index" :class="{'del-type':item.done}">
+                <span @click="toggleStatu(item.key)">{{index+1}}. {{item.text}}</span>
+                <span @click="delTodo(item.key)" class="btn-del">Del</span>
+            </li>
         </ul>
     </div>
 </template>
@@ -72,10 +75,19 @@ export default {
             });
         },
         toggleStatu(key) {
+            console.log(key);
             this.$store.commit(types.TOGGLE_TODO_STATU, key);
 
             this.$messageBox({
                 message: '变更了状态 ...'
+            });
+        },
+        delTodo(key) {
+            console.log(key);
+            this.$store.commit(types.DEL_TODO, key);
+
+            this.$messageBox({
+                message: '删除了 todo ...'
             });
         }
     },
@@ -93,7 +105,7 @@ export default {
     padding: 20px 30px;
     box-sizing: border-box;
     min-height: 400px;
-    max-height: 700px;
+    // max-height: 700px;
     background: #fff;
     margin: 50px auto;
     box-shadow: 0 0 16px 4px #ddd;
@@ -123,6 +135,7 @@ export default {
     border-top: 1px solid #ddd;
 
     > li {
+        position: relative;
         border-bottom: 1px solid #ddd;
         line-height: 40px;
         height: 40px;
@@ -130,10 +143,17 @@ export default {
         margin-right: 50px;
         cursor: pointer;
         &:hover {
-            background-color: #f1f1f1;
+            // background-color: #f1f1f1;
         }
         &.del-type {
             text-decoration: line-through;
+        }
+
+        .btn-del {
+            position: absolute;
+            right: -50px;
+            top: 4px;
+            color: #f00;
         }
     }
 }
