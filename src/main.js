@@ -7,9 +7,11 @@ import store from './store';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-import './components/MessageBox';
+import MessageBox from './components/MessageBox';
 
 Vue.use(ElementUI);
+Vue.use(MessageBox);
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
