@@ -1,27 +1,18 @@
 const path = require('path');
 
 module.exports = {
-    // devServer: {
-    //     disableHostCheck: true
-    // },
-    // devServer: {
-    //     hot: true,
-    //     hotOnly: true,
-    //     before: function (app, server) {
+    devServer: {
+        before: function (app, server) {
 
-    //         app.post('/api/*', function (req, res) {
-    //             const key = path.join(__dirname, 'mockup', req.path.replace(/\.js$/, '') + '.js');
+            app.post('/api/*', function (req, res) {
+                const key = path.join(__dirname, 'mockup', req.path.replace(/\.js$/, '') + '.js');
 
-    //             const result = require(key);
-    //             res.json(result);
-    //             delete require.cache[key];
-    //         });
-    //     }
-    // },
-    chainWebpack: config => {
-        config.resolve
-            .symlinks(true)
-        return config
+                const result = require(key);
+                res.json(result);
+                delete require.cache[key];
+            });
+
+        }
     },
     css: {
         extract: false,

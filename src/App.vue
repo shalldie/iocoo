@@ -2,7 +2,7 @@
     <div class="app">
         <LeftBar />
         <section class="app-main">
-
+            <router-view />
         </section>
     </div>
 </template>
@@ -16,7 +16,7 @@ export default {
         LeftBar: () => import('@/components/LeftBar')
     },
     created() {
-        // alert(1);
+        this.dispatchMsg();
     },
     methods: {
         dispatchMsg() {
@@ -40,6 +40,7 @@ export default {
     .app-main {
         @include flex-1;
         background: #fff;
+        padding: 20px;
     }
 }
 </style>

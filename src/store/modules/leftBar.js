@@ -1,15 +1,15 @@
 import * as types from '@/store/mutation-types';
 import axios from 'axios';
 
-// const state = {
-//     info: []
-// };
+const state = {
+    menus: []
+};
 
-// const mutations = {
-//     [types.UPDATE_SIDEBAR](state, payload) {
-//         state.info = payload;
-//     }
-// };
+const mutations = {
+    [types.UPDATE_SIDEBAR](state, payload) {
+        state.menus = payload;
+    }
+};
 
 const actions = {
     async [types.FETCH_SIDEBAR](store) {
@@ -21,6 +21,7 @@ const actions = {
 };
 
 export default {
-    // state,
+    state,
+    mutations,
     actions
 };
