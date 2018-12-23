@@ -1,9 +1,8 @@
 <template>
     <div class="app">
-        ddd
-        <!-- <LeftBar /> -->
+        <LeftBar />
         <section class="app-main">
-            <button @click="dispatchMsg">click me</button>
+
         </section>
     </div>
 </template>
@@ -14,7 +13,7 @@ import * as types from '@/store/mutation-types';
 
 export default {
     components: {
-        // LeftBar: () => import('@/components/LeftBar')
+        LeftBar: () => import('@/components/LeftBar')
     },
     created() {
         // alert(1);
@@ -31,16 +30,16 @@ export default {
 .app {
     width: 100%;
     height: 100%;
+    @include flex;
 
     .left-bar {
         // @include flex;
         min-height: 100vh;
-        background: #2ad;
     }
 
     .app-main {
-        // @include flex-1;
-        background: #f00;
+        @include flex-1;
+        background: #fff;
     }
 }
 </style>
