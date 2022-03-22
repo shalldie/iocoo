@@ -1,29 +1,24 @@
-# vue-app
+# iocoo
 
-## Project setup
-```
-npm install
-```
+IOC library in OOP. 为 OOP 设计的 IOC 库。
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+[![npm][iocoo-icon]][iocoo-npm]
+[![test status](https://img.shields.io/github/workflow/status/shalldie/iocoo/ci?label=test&logo=github&style=flat-square)](https://github.com/shalldie/iocoo/actions)
+[![license](https://img.shields.io/npm/l/iocoo?logo=github&style=flat-square)](https://github.com/shalldie/iocoo)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+<!-- [English](./README.md) | [中文](./README.zh-CN.md) -->
 
-### Run your tests
-```
-npm run test
-```
+## Installation
 
-### Lints and fixes files
-```
-npm run lint
-```
+    npm install iocoo --save
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Usage & Example
+
+## License
+
+MIT
+
+<!-- iocoo -->
+
+[iocoo-icon]: https://img.shields.io/npm/v/iocoo.svg?logo=npm&style=flat-square
+[iocoo-npm]: https://www.npmjs.com/package/iocoo

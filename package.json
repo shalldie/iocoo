@@ -1,26 +1,52 @@
 {
-  "name": "vue-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "iocoo",
+  "version": "0.0.1",
+  "description": "IOC library in OOP. 为 OOP 设计的 IOC 库。",
+  "main": "dist/iocoo.umd.js",
+  "module": "dist/iocoo.es.js",
+  "types": "dist/iocoo.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/iocoo.es.js",
+      "require": "./dist/iocoo.umd.js"
+    }
+  },
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "test": "vitest --run",
+    "lint": "eslint --ext .js,.ts src",
+    "build": "tsc && vite build"
   },
-  "dependencies": {
-    "axios": "^0.18.0",
-    "vue": "^2.5.17",
-    "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shalldie/iocoo.git"
+  },
+  "keywords": [
+    "ioc",
+    "di",
+    "oop"
+  ],
+  "author": "shalldie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shalldie/iocoo/issues"
+  },
+  "homepage": "https://github.com/shalldie/iocoo#readme",
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.2.0",
-    "@vue/cli-service": "^3.2.0",
-    "mockjs": "^1.0.1-beta3",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.17"
-  },
-  "resolutions": {
-    "webpack-dev-server": "3.1.10"
+    "@types/node": "^17.0.22",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.6.0",
+    "typescript": "^4.5.4",
+    "vite": "^2.8.0",
+    "vite-plugin-dts": "^1.0.0",
+    "vitest": "^0.7.7"
   }
 }
