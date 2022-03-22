@@ -1,6 +1,6 @@
 {
   "name": "iocoo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "IOC library in OOP. 为 OOP 设计的 IOC 库。",
   "main": "dist/iocoo.umd.js",
   "module": "dist/iocoo.es.js",
