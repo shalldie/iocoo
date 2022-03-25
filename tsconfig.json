@@ -6,6 +6,8 @@
         "lib": ["ESNext", "DOM"],
         "moduleResolution": "Node",
         "strict": true,
+        "outDir": "dist",
+        "noImplicitAny": false,
         "sourceMap": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
@@ -13,7 +15,10 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noImplicitReturns": true,
-        "types": ["vitest/globals"]
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": true,
+        "types": ["reflect-metadata", "jest"]
     },
     "include": ["src"]
 }
